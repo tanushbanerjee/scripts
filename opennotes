@@ -1,0 +1,17 @@
+#!/bin/sh
+
+choice=$(echo "Vimwiki\nGroff" | dmenu -i -p "Notes: " -l 30)
+
+if [ "$choice" = "Vimwiki" ];
+then
+    st -e nvim "$HOME/vimwiki/index.wiki"
+
+elif [ "$choice" = "Groff" ];
+then
+    groffchoice=$(ls "$HOME/fl/megasync/notes/" | dmenu -l 30 -i -p "Notes - Groff: ")
+    st -e nvim "$HOME/fl/megasync/notes/$groffchoice"
+else
+    echo "No input was identifyed!"
+    echo "Program terminated!"
+    exit 1
+fi

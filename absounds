@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+soundDir="$HOME/fl/mus/ambientsounds"
+declare -a _options=(
+    "Choose sound file"
+    "Stop sound player"
+    "Quit"
+)
+choice=$(printf '%s\n' "${_options[@]}" | dmenu -i -p "Ambient Noises: " -l 30 "${@}")
+if [ "$choice" == "Choose sound file" ]; then
+    choicedm=$(ls -l $soundDir | awk '{print $9}' | dmenu -l 30)
+    mpv --loop "$soundDir/$choicedm"
+    killall mpv || echo "mpv was not running so not killed!"
+elif [ "$choice" == "Stop sound player" ]; then
+     killall mpv || echo "mpv was not running."
+else
+    echo "Program Terminated!!!" && exit 0
+fi

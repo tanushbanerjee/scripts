@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+declare -a _options=(
+    "nvim"
+    "sxhkd"
+    "bspwm"
+    "i3"
+    "i3blocks"
+    "lf"
+)
+choice=$(printf '%s\n' "${_options[@]}" | dmenu -i -p "Edit Config: " -l 30 "${@}")
+
+if [ "$choice" == "nvim" ]; then
+    st -e nvim $HOME/.config/nvim/init.vim
+
+elif [ "$choice" == "sxhkd" ]; then
+    st -e nvim $HOME/.config/sxhkd/sxhkdrc
+
+elif [ "$choice" == "bspwm" ]; then
+    st -e nvim $HOME/.config/bspwm/bspwmrc
+
+elif [ "$choice" == "i3blocks" ]; then
+    st -e nvim $HOME/.config/i3/i3blocks.conf
+
+elif [ "$choice" == "lf" ]; then
+    st -e nvim $HOME/.config/lf/lfrc
+
+else
+    echo "Program Terminated!"
+fi
