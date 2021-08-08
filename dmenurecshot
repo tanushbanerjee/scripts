@@ -1,0 +1,10 @@
+#!/bin/dash
+choice=$(echo "screenshot-fullscreen\nscreenshot-fullscreen(copy)\nscreenshot-selected\nscreenshot-selected(copy)\nscreenshot-activewindow" | dmenu -p "What to do?: ")
+case $choice in
+    "screenshot-fullscreen") maim full-$(date '+%y%m%d-%H%M-%S').png;;
+    "screenshot-fullscreen(copy)") maim | xclip -selection clipboard -t image/png;; 
+    "screenshot-selected") maim -s selected-$(date '+%y%m%d-%H%M-%S').png;;
+    "screenshot-selected(copy)") maim -s | xclip -selection clipboard -t image/png;;
+    "screenshot-activewindow") maim -i $(xdotool getactivewindow) activewindow-$(date '+%y%m%d-%H%M-%S').png;;
+    "screenshot-activewindow") maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png;; 
+esac 

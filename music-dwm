@@ -1,0 +1,5 @@
+#!/bin/dash
+filter() { mpc | sed "/^volume:/d;s/\\&/&amp;/g;s/\\[paused\\].*/⏸ /g;/\\[playing\\].*/d;/^ERROR/Q" | paste -sd ' ' -; }
+
+filter
+pidof -x /home/hacker/fl/scripts/mpdup >/dev/null 2>&1 || /home/hacker/fl/scripts/mpdup >/dev/null 2>&1 &

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -f ~/.config/bmalias ]; then
+    for al in $(cat ~/.config/bmalias); do
+        if test "$(echo $al | awk '{print $1}')" = "dirc"; then
+            key=$(echo $al | awk '{print $2}');
+            dirc=$(echo $al | awk '{print $3}');
+            echo "Creating alias, with key as $key and directory as $dirc...";
+            echo "alias $key='cd $dirc && ls -a'" > ~/.config/shortcuts;
+        fi
+    done
+fi

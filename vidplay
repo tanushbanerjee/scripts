@@ -1,0 +1,6 @@
+#!/bin/sh
+VID_FOLDER=/home/hacker/fl/vids/
+cd $VID_FOLDER
+
+mpv "$(find . | dmenu -i -l 30)"
+

@@ -1,0 +1,8 @@
+#!/bin/sh
+aldir="$HOME/.config/shell/bmdirs"
+alfile="$HOME/.config/shell/bmfiles"
+
+echo "Creating aliases for directories..."
+sed "/^#/d" "$aldir" | awk '{print "alias "$1"=\"cd "$2" && ls -a \""}'
+sed "/^#/d" "$aldir" | awk '{print "alias "$1"=\"cd "$2" && ls -a \""}' > ~/.config/shortcuts
+

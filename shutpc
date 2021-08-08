@@ -1,0 +1,8 @@
+#!/bin/dash
+
+choice=$(echo "shutdown\nreboot" | dmenu -p "What to do?: ")
+
+case "$choice" in
+	shutdown) shutdown now;;
+	reboot) reboot;;
+esac

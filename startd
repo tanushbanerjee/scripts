@@ -1,0 +1,16 @@
+#!/bin/dash
+
+if test "$1" = "dwm"; then
+	startx ~/fl/scripts/startxscripts/dwm.xinitrc
+elif test "$1" = "-h"; then
+	echo "startd (dwm, emacs, xmonad, qtile)"
+elif test "$1" = "emacs"; then
+	startx ~/fl/scripts/startxscripts/emacs.xinitrc
+elif test "$1" = "xmonad"; then
+	startx ~/fl/scripts/startxscripts/xmonad.xinitrc
+elif test "$1" = "qtile"; then
+	startx ~/fl/scripts/startxscripts/qtile.xinitrc
+else
+	echo "Invalid argument"
+fi
+
